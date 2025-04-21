@@ -1,3 +1,3 @@
 module.exports = {
-    default: `--publish-quiet --require ./features/step_definitions/*.js`
+    default: `--publish-quiet --require ./step_definitions/*.js`
   };
