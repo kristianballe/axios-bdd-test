@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber-js",
             "args": [
               "--require",
-              "features/step_definitions/**/*.js",
+              "step_definitions/**/*.js",
               "--format",
               "@cucumber/pretty-formatter",
               "features",
