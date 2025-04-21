@@ -29,6 +29,6 @@ Then('I should receive a good status code', function () {
   expect(response.status).to.equal(200);
 });
 
-Then('the color of true red is {str}', function (str) {
+Then('the color of true red is {string}', function (str) {
   expect(responseTrueRed.color).to.eq(str);
 });

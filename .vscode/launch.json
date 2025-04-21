@@ -14,6 +14,9 @@
               "features/step_definitions/**/*.js",
               "--format",
               "@cucumber/pretty-formatter",
+              "features",
+              "--tags",
+              "@positive",
               "features"
             ],
             "console": "integratedTerminal",
