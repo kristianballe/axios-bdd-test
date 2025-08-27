@@ -3,11 +3,14 @@ name: Run My App
 on:
   push:
     branches:
-      - master
+      - master   # run on master pushes
+    tags:
+      - '*positive*'  # run on tags containing "positive"
 
 jobs:
   build-and-run:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/') && contains(github.ref, 'positive') || github.ref == 'refs/heads/master'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
