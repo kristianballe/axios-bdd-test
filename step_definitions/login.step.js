@@ -1,32 +1,55 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const chai = require('chai');
 const axios = require('axios');
+const https = require('https'); // Add https module
 const expect = chai.expect;
 
 let response;
-let endpoint = '';
+let endpoint;
 
 Given('I have the API endpoint for login', function () {
-  endpoint = 'https://reqres.in/api/login';
+  endpoint = "https://practice.expandtesting.com/notes/api/users/login";
 });
 
 When('I send a POST request with valid credentials', async function () {
-  
   try {
+    console.log('Sending login request to:', endpoint);
+
     response = await axios({
       method: 'post',
       url: endpoint,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       data: {
-        email: 'eve.holt@reqres.in',
-        password: 'cityslicka'
-      }
-    }); 
+        email: 'cebpac@gmail.com',
+        password: 'test1234'
+      },
+      httpsAgent: new https.Agent({ rejectUnauthorized: false }) // Bypass SSL for dev
+    });
+
+    console.log('Login response:', response.data);
+
   } catch (err) {
-      // Handle error - you can log the error or access err.response for more details
+    if (err.response) {
       response = err.response;
-      console.error('Error occurred:', err.response || err.message);
+      console.error('API returned error:', err.response.data);
+    } else {
+      console.error('Request failed:', err.message);
+      throw err; // Fail the test if request cannot reach server
     }
-  })
+  }
+});
+
+Then('I should receive a {int} status code', function (statusCode) {
+  // console.log('Response status:', response?.status);
+  expect(response.status).to.equal(statusCode);
+});
+
+Then('I should get a token in the response', function () {
+  // console.log('Response data:', response.data);
+  expect(response.data.data).to.have.property('token');
+});
 
 When('I send a POST request with missing password', async function () {
   
@@ -44,14 +67,6 @@ When('I send a POST request with missing password', async function () {
       console.error('Error occurred:', err.response || err.message);
     }
   });
-
-Then('I should receive a {int} status code', function (statusCode) {
-  expect(response.status).to.equal(statusCode);
-});
-
-Then('I should get a token in the response', function () {
-  expect(response.data).to.have.property('token');
-});
 
 Then('I should get an error message', function () {
   expect(response.data).to.have.property('error');

@@ -1,6 +1,6 @@
 Feature: Login API
 
-  @positive_pass
+  @positive
   Scenario: Successful login
     Given I have the API endpoint for login
     When I send a POST request with valid credentials

@@ -1,6 +1,6 @@
 Feature: List of Users
 
-  @positive
+  @positive_pass
   Scenario: Retrieve all list of users
     Given the user go to list of users endpoint
     When the user get a request

@@ -1,6 +1,6 @@
 Feature: Login API
 
-  @positive_pass
+  @positive_fail
   Scenario: Retrieve API unknown
     Given I have the API endpoint for api unknown
     When I send a GET request with to retrieve unknown data
