@@ -13,7 +13,6 @@ Given('I have the API endpoint for login', function () {
 
 When('I send a POST request with valid credentials', async function () {
   try {
-    console.log('Sending login request to:', endpoint);
 
     response = await axios({
       method: 'post',
@@ -28,8 +27,6 @@ When('I send a POST request with valid credentials', async function () {
       httpsAgent: new https.Agent({ rejectUnauthorized: false }) // Bypass SSL for dev
     });
 
-    console.log('Login response:', response.data);
-
   } catch (err) {
     if (err.response) {
       response = err.response;
@@ -42,12 +39,10 @@ When('I send a POST request with valid credentials', async function () {
 });
 
 Then('I should receive a {int} status code', function (statusCode) {
-  // console.log('Response status:', response?.status);
   expect(response.status).to.equal(statusCode);
 });
 
 Then('I should get a token in the response', function () {
-  // console.log('Response data:', response.data);
   expect(response.data.data).to.have.property('token');
 });
 
