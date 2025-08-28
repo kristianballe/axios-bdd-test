@@ -23,5 +23,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+        
+      - name: Fix permissions
+        run: chmod +x node_modules/.bin/*
+
+
       - name: Run the app
-        run: npm test
+        run: npx --no-install cucumber-js
