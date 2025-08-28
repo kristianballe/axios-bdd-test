@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx cucumber-js",
+    "test": "cucumber-js --import step_definitions/**/*.js",
     "start": "node index.js"
   },
   "keywords": [],
