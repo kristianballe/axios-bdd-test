@@ -1,3 +1,7 @@
-module.exports = {
-    default: `--publish-quiet --require ./step_definitions/*.js`
-  };
+export default {
+  default: {
+    import: ['step_definitions/**/*.js'],
+    format: ['@cucumber/pretty-formatter'],
+    tags: '@positive'
+  }
+};
