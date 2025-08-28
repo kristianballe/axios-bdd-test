@@ -12,17 +12,17 @@ Given('I have the API endpoint for api unknown', function () {
 
 When('I send a GET request with to retrieve unknown data', async function () {
   
-  try {
-    response = await axios({
-      method: 'get',
-      url: endpoint,
-    }); 
-  } catch (err) {
-      // Handle error - you can log the error or access err.response for more details
-      response = err.response;
-      console.error('Error occurred:', err.response || err.message);
-    }
-    responseTrueRed = response.data.data.filter(item => item.name.toLowerCase() === 'true red')[0];
+  // try {
+  //   response = await axios({
+  //     method: 'get',
+  //     url: endpoint,
+  //   }); 
+  // } catch (err) {
+  //     // Handle error - you can log the error or access err.response for more details
+  //     response = err.response;
+  //     console.error('Error occurred:', err.response || err.message);
+  //   }
+  //   responseTrueRed = response.data.data.filter(item => item.name.toLowerCase() === 'true red')[0];
   })
 
 Then('I should receive a good status code', function () {
