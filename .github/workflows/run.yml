@@ -29,4 +29,9 @@ jobs:
 
 
       - name: Run the app
-        run: npx --no-install cucumber-js
+        run: npx cucumber-js --config cucumber.js
+
+        
+      - name: Set working directory
+        run: cd ${{ github.workspace }}
+
