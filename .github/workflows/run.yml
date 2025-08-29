@@ -35,3 +35,8 @@ jobs:
       - name: Set working directory
         run: cd ${{ github.workspace }}
 
+        
+      - name: List project files
+        run: ls -R
+
+
