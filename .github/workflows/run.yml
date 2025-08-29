@@ -28,15 +28,12 @@ jobs:
         run: chmod +x node_modules/.bin/*
 
 
+      - name: Debug file structure
+        run: |
+          pwd
+          ls -R features
+
       - name: Run the app
         run: npx cucumber-js --config cucumber.js
-
-        
-      - name: Set working directory
-        run: cd ${{ github.workspace }}
-
-        
-      - name: List project files
-        run: ls -R
 
 
