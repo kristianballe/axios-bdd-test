@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master   # run on master pushes
-    tags:
-      - '*positive*'  # run on tags containing "positive"
+    # tags:
+    #   - '*positive*'  # run on tags containing "positive"
 
 jobs:
   build-and-run:
@@ -34,6 +34,6 @@ jobs:
           ls -R features
 
       - name: Run the app
-        run: npx cucumber-js --config cucumber.js
+        run: npx cucumber-js --config cucumber.js --tags "@positive"
 
 
