@@ -3,7 +3,7 @@ name: Cucumber Tests
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
   schedule:
     - cron: '0 2 * * *'  # Nightly at 2:00 AM UTC
