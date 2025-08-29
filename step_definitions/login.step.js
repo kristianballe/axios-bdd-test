@@ -1,8 +1,7 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
-const chai = require('chai');
-const axios = require('axios');
-const https = require('https'); // Add https module
-const expect = chai.expect;
+import { Given, When, Then } from '@cucumber/cucumber';
+import {expect} from 'chai';
+import axios from 'axios';
+import https from 'https'; // Add https module
 
 let response;
 let endpoint;
