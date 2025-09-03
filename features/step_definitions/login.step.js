@@ -2,12 +2,15 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import {expect} from 'chai';
 import axios from 'axios';
 import https from 'https'; // Add https module
+import { endpoints } from '../../testData/endpoints.js';
+import { credentials } from '../../testData/credentials.js';
+
 
 let response;
 let endpoint;
 
 Given('I have the API endpoint for login', function () {
-  endpoint = "https://practice.expandtesting.com/notes/api/users/login";
+  endpoint = endpoints.login;
 });
 
 When('I send a POST request with valid credentials', async function () {
@@ -20,8 +23,8 @@ When('I send a POST request with valid credentials', async function () {
         'Content-Type': 'application/json'
       },
       data: {
-        email: 'cebpac@gmail.com',
-        password: 'test1234'
+        email: credentials.login.valid.email,
+        password: credentials.login.valid.password
       },
       httpsAgent: new https.Agent({ rejectUnauthorized: false }) // Bypass SSL for dev
     });

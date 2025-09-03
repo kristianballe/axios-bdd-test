@@ -1,0 +1,81 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-api;successful-login",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Successful login",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I have the API endpoint for login",
+            "match": {
+              "location": "file:\\C:\\Users\\kmbkristian\\Desktop\\axios-bdd\\axios-bdd-test\\features\\step_definitions\\login.step.js:12"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1212999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I send a POST request with valid credentials",
+            "match": {
+              "location": "file:\\C:\\Users\\kmbkristian\\Desktop\\axios-bdd\\axios-bdd-test\\features\\step_definitions\\login.step.js:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 623374599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should receive a 200 status code",
+            "match": {
+              "location": "file:\\C:\\Users\\kmbkristian\\Desktop\\axios-bdd\\axios-bdd-test\\features\\step_definitions\\login.step.js:43"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1089899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I should get a token in the response",
+            "match": {
+              "location": "file:\\C:\\Users\\kmbkristian\\Desktop\\axios-bdd\\axios-bdd-test\\features\\step_definitions\\login.step.js:47"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1810699
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@positive",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-api",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login API",
+    "tags": [],
+    "uri": "features\\login.feature"
+  }
+]

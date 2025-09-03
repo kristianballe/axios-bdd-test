@@ -7,17 +7,24 @@
           {
             "type": "node",
             "request": "launch",
-            "name": "Run Cucumber with Steps in Console",
-            "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber-js",
+            "name": "Run Cucumber with HTML Report",
+            // "program": "${workspaceFolder}/node_modules/npm/bin/npm-cli.js",
+            // "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber-js",
+            "runtimeExecutable": "npm",
             "args": [
+              "run",
+              "test:report",
+              // // "--",
               "--require",
               "features/step_definitions/**/*.js",
               "--format",
               "@cucumber/pretty-formatter",
               "features",
-              "--tags",
-              "@positive",
-              "features"
+              "--format",
+              "json:cucumber_report.json",
+              // "--tags",
+              // "@positive",
+              // "features"
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"
