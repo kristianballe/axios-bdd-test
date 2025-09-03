@@ -12,5 +12,5 @@ cucumber_report.html
 .DS_Store
 Thumbs.db
 
-# # VS Code settings (optional)
-# .vscode/
+# Yml File
+.github/
