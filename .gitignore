@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+
+# Cucumber reports
+cucumber_report.json
+cucumber_report.html
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# # VS Code settings (optional)
+# .vscode/
