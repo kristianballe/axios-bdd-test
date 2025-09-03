@@ -10,12 +10,8 @@
             "name": "Run Cucumber with HTML Report",
             "runtimeExecutable": "npm",
             "args": [
-              // "cucumber-js",
-              // "--import",
-               
               "run",
               "test:report",
-
               "--",
               "--tags",
               "@negative",
@@ -24,13 +20,9 @@
               "features/step_definitions/**/*.js",
               "--format",
               "@cucumber/pretty-formatter",
-              // "features",
+              "features",
               "--format",
-              "json:cucumber_report.json",
-              //  "--tags",
-              // "@negative",
-              // "features"
-              
+              "json:cucumber_report.json",     
             ],
             "env": {
               "TAGS": "@negative"
