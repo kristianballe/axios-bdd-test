@@ -4,7 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js --import features/step_definitions/**/*.js --format @cucumber/pretty-formatter --format json:cucumber_report.json --tags @positive",
+    "test": "npx cucumber-js --import features/step_definitions/**/*.js --format @cucumber/pretty-formatter --format json:cucumber_report.json --tags @positive",
     "report": "node generate-html-report.js",
     "test:report": "npm run test && npm run report"
 
