@@ -1,3 +1,4 @@
+@regression
 Feature: Login API
 
   @positive
@@ -7,7 +8,7 @@ Feature: Login API
     Then I should receive a 200 status code
     And I should get a token in the response
 
-  @positive_pass
+  @negative
   Scenario: Failed login with missing password
     Given I have the API endpoint for login
     When I send a POST request with missing password

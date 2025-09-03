@@ -4,6 +4,7 @@ import axios from 'axios';
 import https from 'https'; // Add https module
 import { endpoints } from '../../testData/endpoints.js';
 import { credentials } from '../../testData/credentials.js';
+import { responseMessages } from '../../testData/responseMessages.js';
 
 
 let response;
@@ -51,20 +52,31 @@ Then('I should get a token in the response', function () {
 When('I send a POST request with missing password', async function () {
   
   try {
+
     response = await axios({
       method: 'post',
       url: endpoint,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       data: {
-        email: 'eve.holt@reqres.in'
-      }
-    }); 
+        email: credentials.login.valid.email,
+        password: ""
+      },
+      httpsAgent: new https.Agent({ rejectUnauthorized: false }) // Bypass SSL for dev
+    });
+
   } catch (err) {
-      // Handle error - you can log the error or access err.response for more details
+    if (err.response) {
       response = err.response;
-      console.error('Error occurred:', err.response || err.message);
+      console.error('API returned error:', err.response.data);
+    } else {
+      console.error('Request failed:', err.message);
+      throw err; // Fail the test if request cannot reach server
     }
-  });
+  }
+});
 
 Then('I should get an error message', function () {
-  expect(response.data).to.have.property('error');
+  expect(response.data.message).to.equal(responseMessages.login.loginError);
 });
