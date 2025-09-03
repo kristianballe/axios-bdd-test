@@ -30,7 +30,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Fix cucumber-js permissions
+        run: chmod +x ./node_modules/.bin/cucumber-js
 
       - name: Run Cucumber tests and generate HTML
         run: |
