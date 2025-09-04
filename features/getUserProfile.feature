@@ -1,4 +1,4 @@
-@regression
+
 Feature: Retrieve User Profile
 
   @positive

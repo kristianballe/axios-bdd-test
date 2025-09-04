@@ -4,5 +4,8 @@ export const responseMessages = {
   },
   getUserProfile: {
     getUserProfileMessage: "Profile successful"
+  },
+  updateUserProfile: {
+    updateUserProfileMessage: "Profile updated successful"
   }
 };
