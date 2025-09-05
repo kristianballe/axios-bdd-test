@@ -13,7 +13,7 @@ cucumber_report.html
 Thumbs.db
 
 # Yml File
-# .github/
+.github/
 
 # VScode files
-# .vscode/
+.vscode/
