@@ -1,0 +1,53 @@
+# .github/workflows/cucumber-tests.yml
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow
+
+name: Nightly Run and Run All Scenarios & Positive Scenarios
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+    - cron: '0 2 * * *'  # Nightly at 2:00 AM UTC
+  workflow_dispatch:      # Manual trigger
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        run-type: [all, positive]  # Run both all and @positive tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fix cucumber-js permissions
+        run: chmod +x ./node_modules/.bin/cucumber-js
+
+      - name: Run Cucumber tests and generate HTML
+        run: |
+          if [ "${{ matrix.run-type }}" == "all" ]; then
+            echo "Running all scenarios"
+            npm run test:report
+          else
+            echo "Running @positive scenarios"
+            npx cucumber-js --import features/step_definitions/**/*.js --format @cucumber/pretty-formatter --format json:cucumber_report.json --tags "@positive"
+            node generate-html-report.js
+          fi
+
+      - name: Upload HTML report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-html-report-${{ matrix.run-type }}
+          path: cucumber_report.html
